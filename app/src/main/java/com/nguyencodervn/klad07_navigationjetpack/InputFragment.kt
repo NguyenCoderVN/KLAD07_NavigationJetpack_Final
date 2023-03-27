@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 
 class InputFragment : Fragment(R.layout.fragment_input) {
     private lateinit var submitBt: Button
@@ -19,16 +19,16 @@ class InputFragment : Fragment(R.layout.fragment_input) {
 
         submitBt.setOnClickListener {
             val input = inputEt.text.toString()
-            val action = InputFragmentDirections
-                .actionInputFragmentToMessageFragment(input)
             if (input.isEmpty()) {
                 Toast.makeText(
                     context,
-                    getString(R.string.hello),
+                    getString(R.string.input),
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                view.findNavController().navigate(action)
+                val action = InputFragmentDirections
+                    .actionInputFragmentToMessageFragment(input)
+                findNavController().navigate(action)
             }
         }
     }

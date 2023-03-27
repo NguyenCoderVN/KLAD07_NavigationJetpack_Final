@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: NavigationView
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
+    private lateinit var badgeWelcome: BadgeDrawable
+    private lateinit var badgeHelp: BadgeDrawable
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +52,37 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(navView, navController)
         NavigationUI.setupWithNavController(bottomNavView, navController)
 
+        badgeWelcome = bottomNavView.getOrCreateBadge(R.id.welcomeFragment)
+        badgeHelp = bottomNavView.getOrCreateBadge(R.id.helpFragment)
+        badgeHelp.isVisible = false
+
+        bottomNavView.setOnItemSelectedListener {
+            checkBadge(it)
+            findNavController(R.id.fragmentContainerView).navigate(it.itemId)
+            false
+        }
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            checkBadge(menuItem)
+            findNavController(R.id.fragmentContainerView).navigate(menuItem.itemId)
+            drawerLayout.close()
+            true
+        }
+
+    }
+
+    private fun checkBadge(menuItem: MenuItem) {
+        badgeWelcome.isVisible = false
+        badgeHelp.isVisible = false
+        when (menuItem.itemId) {
+            R.id.welcomeFragment -> {
+                badgeWelcome.isVisible = true
+            }
+            R.id.helpFragment -> {
+                badgeHelp.isVisible = true
+            }
+            else -> {}
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -60,9 +95,9 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(navController)
                 || super.onOptionsItemSelected(item)
     }
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {

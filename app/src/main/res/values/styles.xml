@@ -1,7 +1,5 @@
 <resources>
-
-    <style name="Widget.Theme.KLAD07_NavigationJetpack.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black_overlay</item>
-        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    <style name="ShapeAppearanceOverlay.App.Circle" parent="">
+        <item name="cornerSize">50%</item>
     </style>
 </resources>

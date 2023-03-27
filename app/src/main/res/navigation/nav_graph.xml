@@ -8,16 +8,8 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.nguyencodervn.klad07_navigationjetpack.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_inputFragment"
-            app:destination="@id/inputFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/rotate"
-            app:popExitAnim="@anim/push_down_out" />
-    </fragment>
+        android:label="@string/welcome"
+        tools:layout="@layout/fragment_welcome"/>
     <fragment
         android:id="@+id/inputFragment"
         android:name="com.nguyencodervn.klad07_navigationjetpack.InputFragment"
@@ -25,38 +17,29 @@
         tools:layout="@layout/fragment_input" >
         <action
             android:id="@+id/action_inputFragment_to_messageFragment"
-            app:destination="@id/messageFragment" />
+            app:destination="@id/messageFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/push_up_in"
+            app:popExitAnim="@anim/push_up_out" />
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
         android:name="com.nguyencodervn.klad07_navigationjetpack.MessageFragment"
         android:label="fragment_message"
         tools:layout="@layout/fragment_message" >
-        <action
-            android:id="@+id/action_messageFragment_to_exitActivity"
-            app:destination="@id/exitActivity" />
         <argument
             android:name="message"
             android:defaultValue="No Name" />
     </fragment>
-    <activity
-        android:id="@+id/exitActivity"
-        android:name="com.nguyencodervn.klad07_navigationjetpack.ExitActivity"
-        android:label="activity_exit"
-        tools:layout="@layout/activity_exit" />
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.nguyencodervn.klad07_navigationjetpack.HelpFragment"
         android:label="@string/help"
         tools:layout="@layout/fragment_help" />
-    <fragment
-        android:id="@+id/inboxFragment"
-        android:name="com.nguyencodervn.klad07_navigationjetpack.InboxFragment"
-        android:label="@string/inbox"
-        tools:layout="@layout/fragment_inbox" />
-    <fragment
-        android:id="@+id/sentItemsFragment"
-        android:name="com.nguyencodervn.klad07_navigationjetpack.SentItemsFragment"
-        android:label="@string/send_item"
-        tools:layout="@layout/fragment_sent_items" />
+
+    <dialog
+        android:id="@+id/aboutDialogFragment"
+        android:name="com.nguyencodervn.klad07_navigationjetpack.AboutDialogFragment"
+        android:label="AboutDialogFragment" />
 </navigation>

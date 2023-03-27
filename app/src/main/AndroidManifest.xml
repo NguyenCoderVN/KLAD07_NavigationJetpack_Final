@@ -12,9 +12,6 @@
         android:theme="@style/Theme.KLAD07_NavigationJetpack"
         tools:targetApi="31">
         <activity
-            android:name=".ExitActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.KLAD07_NavigationJetpack.NoActionBar"
             android:exported="true">
