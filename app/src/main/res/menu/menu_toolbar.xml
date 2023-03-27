@@ -8,4 +8,19 @@
         android:icon="@drawable/baseline_help_24"
         android:title="@string/help"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/helpFragment1"
+        android:icon="@drawable/baseline_help_24"
+        android:title="@string/help"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/helpFragment2"
+        android:icon="@drawable/baseline_help_24"
+        android:title="@string/help"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/helpFragment3"
+        android:icon="@drawable/baseline_help_24"
+        android:title="@string/help"
+        app:showAsAction="never" />
 </menu>

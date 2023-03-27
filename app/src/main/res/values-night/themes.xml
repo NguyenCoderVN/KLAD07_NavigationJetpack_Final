@@ -17,6 +17,5 @@
     <style name="Theme.KLAD07_NavigationJetpack.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-
     </style>
 </resources>

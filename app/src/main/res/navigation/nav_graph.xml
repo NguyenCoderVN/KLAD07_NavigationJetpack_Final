@@ -13,7 +13,10 @@
         <action
             android:id="@+id/action_welcomeFragment_to_inputFragment"
             app:destination="@id/inputFragment"
-            app:enterAnim="@anim/slide_out" />
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/rotate"
+            app:popExitAnim="@anim/push_down_out" />
     </fragment>
     <fragment
         android:id="@+id/inputFragment"
