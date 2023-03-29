@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.nguyencodervn.klad07_navigationjetpack.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/inputFragment"
+        android:name="com.nguyencodervn.klad07_navigationjetpack.InputFragment"
+        android:label="fragment_input"
+        tools:layout="@layout/fragment_input" >
+        <action
+            android:id="@+id/action_to_messageFragment"
+            app:destination="@id/messageFragment"
+            app:enterAnim="@anim/push_down_in"
+            app:exitAnim="@anim/push_down_out"
+            app:popEnterAnim="@anim/push_up_in"
+            app:popExitAnim="@anim/push_up_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.nguyencodervn.klad07_navigationjetpack.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message">
+        <argument
+            android:name="message"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="nguyencodervn.com/test/{message}" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.nguyencodervn.klad07_navigationjetpack.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" />
+    <dialog
+        android:id="@+id/aboutDialogFragment"
+        android:name="com.nguyencodervn.klad07_navigationjetpack.AboutDialogFragment"
+        android:label="AboutDialogFragment" />
+</navigation>
